@@ -7,3 +7,12 @@ function change_woocommerce_item_text($translation, $single, $plural, $number, $
     }
     return $translation;
 }
+
+
+
+// Hide number of Theme Builder cart items if cart is empty
+add_action( 'wp_footer', function() {
+    if ( WC()->cart->is_empty() ) {
+        echo '<style type="text/css">.et_pb_menu__cart-count { display: none; }</style>';
+    }
+});
